@@ -107,7 +107,7 @@
   <div class="viewport">
     <div class="card">
       <div class="icon">📮</div>
-      <div class="title">전기요금 정보 Letter</div>
+      <div class="title">요금레터</div>
       <div class="desc">홈 화면에 먼저 추가한 뒤 사용하세요.</div>
       <button type="button" class="open-btn" onclick="openApp()">앱 열기</button>
     </div>
@@ -115,7 +115,10 @@
 
   <script>
     function openApp() {
-      window.location.href = "https://script.google.com/macros/s/AKfycbz6txALy_4dgrwM43nd2S0fJhxpbThhvyXGEZ3Et9OTJqccuSnO1dv0U_eREyy2V2mNJA/exec";
+      const token = localStorage.getItem('approvedUserToken') || '';
+      const base = "https://script.google.com/macros/s/AKfycbz6txALy_4dgrwM43nd2S0fJhxpbThhvyXGEZ3Et9OTJqccuSnO1dv0U_eREyy2V2mNJA/exec";
+      const url = token ? `${base}?token=${encodeURIComponent(token)}` : base;
+      window.location.href = url;
     }
   </script>
 </body>
